@@ -6,3 +6,4 @@ TIG/mosquitto/log
 Device/.pio
 Device/.vscode
 Device/src/secrets.h
+.vscode
