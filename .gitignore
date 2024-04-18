@@ -1,4 +1,4 @@
-TIG/influxdb/influxdb-data
+TIG/influxdb
 TIG/grafana
 TIG/telegraf
 TIG/mosquitto/data
@@ -7,3 +7,4 @@ Device/.pio
 Device/.vscode
 Device/src/secrets.h
 .vscode
+.DS_Store
