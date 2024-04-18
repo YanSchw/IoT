@@ -3,7 +3,6 @@ TIG/grafana
 TIG/telegraf
 TIG/mosquitto/data
 TIG/mosquitto/log
-TIG/telegraf.conf
 Device/.pio
 Device/.vscode
 Device/src/secrets.h
