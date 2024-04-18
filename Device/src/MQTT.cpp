@@ -43,10 +43,12 @@ void MQTT::Connect()
 
 void MQTT::Publish(const std::string& topic, const std::string& data, int32_t qos, bool retain)
 {
-    int32_t error = esp_mqtt_client_publish(s_Client, topic.c_str(), data.c_str(), 0, qos, retain ? 1 : 0);
-
-    if (error == -1)
+    if (esp_mqtt_client_publish(s_Client, topic.c_str(), data.c_str(), 0, qos, retain ? 1 : 0) == -1)
     {
         Serial.println("MQTT::Publish(): Something went wrong.");
     }   
+}
+void MQTT::Publish(const std::string& topic, int32_t data, int32_t qos, bool retain)
+{
+    Publish(topic, std::to_string(data), qos, retain);
 }
