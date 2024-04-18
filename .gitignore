@@ -1,4 +1,5 @@
 include/secrets.h
 include/config.h
+.pio
 .vscode
 .DS_Store
