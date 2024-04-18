@@ -1,0 +1,6 @@
+TIG/influxdb/influxdb-data
+TIG/grafana
+TIG/telegraf
+!TIG/mosquitto/config/mosquitto.conf
+Device/.pio
+Device/.vscode
