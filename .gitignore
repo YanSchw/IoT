@@ -4,3 +4,4 @@ TIG/telegraf
 !TIG/mosquitto/config/mosquitto.conf
 Device/.pio
 Device/.vscode
+Device/src/secrets.h
