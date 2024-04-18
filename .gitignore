@@ -7,5 +7,6 @@ TIG/telegraf.conf
 Device/.pio
 Device/.vscode
 Device/src/secrets.h
+Device/src/config.h
 .vscode
 .DS_Store
