@@ -1,8 +1,11 @@
 #include "MQTT.h"
 
 #include <WiFi.h>
+#include <mqtt_client.h>
 #include "secrets.h"
 #include "config.h"
+
+static esp_mqtt_client_handle_t s_Client;
 
 void MQTT::Connect()
 {
