@@ -1,9 +1,4 @@
-include/secrets.h
 .pio
 .vscode
 .DS_Store
-TIG/grafana/grafana-data/grafana.db
-TIG/grafana/grafana-data/alerting/1/__default__.tmpl
-TIG/influxdb/influxdb-config/influx-configs
-TIG/influxdb/influxdb-data/influxd.bolt
-TIG/influxdb/influxdb-data/influxd.sqlite
+include/secrets.h
