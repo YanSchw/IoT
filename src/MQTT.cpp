@@ -5,6 +5,8 @@
 #include "secrets.h"
 #include "config.h"
 
+#include "Pump.h"
+
 static esp_mqtt_client_handle_t s_Client;
 
 static esp_err_t mqtt_event_callback(esp_mqtt_event_handle_t event)
@@ -19,6 +21,12 @@ static esp_err_t mqtt_event_callback(esp_mqtt_event_handle_t event)
         Serial.print("Message: "); 
         std::string message = std::string(event->data, event->data_len);
         Serial.println(message.c_str());
+
+        if (topic == "event/pump")
+        {
+            const uint32_t duration = std::abs(std::atoi(message.c_str()));
+            Pump::ActivateForDuration(duration ? duration : 1000);
+        }
     }
 
     return {};
