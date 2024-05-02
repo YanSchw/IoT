@@ -1,15 +1,17 @@
 #include <Arduino.h>
 
 #include "MQTT.h"
+#include "BMP.h"
 
 void setup()
 {
     Serial.begin(9600);
     MQTT::Connect();
+    BMP::Init();
 }
 
 void loop()
 {
-    MQTT::Publish("devices/project/test", rand() % 10, 2, false);
+    MQTT::Publish("devices/project/temp", BMP::GetTemperature(), 2, false);
     delay(5000);
 }
