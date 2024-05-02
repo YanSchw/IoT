@@ -9,8 +9,6 @@ static esp_mqtt_client_handle_t s_Client;
 
 void MQTT::Connect()
 {
-    Serial.begin(9600);
-
     WiFi.mode(WIFI_STA);
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
