@@ -26,6 +26,14 @@ void MQTT::Connect()
     config.host = MQTT_HOSTNAME;
     config.port = MQTT_PORT;
 
+    // Setup Last Will & Testament
+    config.lwt_retain = 1;
+    config.lwt_msg = "offline";
+    config.lwt_qos = 2;
+    config.lwt_topic = "devices/project/status";
+    config.keepalive = 10;
+    //config.disable_auto_reconnect = 1;
+
     s_Client = esp_mqtt_client_init(&config);
     if (s_Client == NULL)
     {
