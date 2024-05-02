@@ -8,6 +8,9 @@ void setup()
     Serial.begin(9600);
     MQTT::Connect();
     BMP::Init();
+
+    // Send Status Online
+    MQTT::Publish("devices/project/status", "online", 2, true);
 }
 
 void loop()
