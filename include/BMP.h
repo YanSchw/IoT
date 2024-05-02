@@ -14,5 +14,5 @@ public:
     static uint32_t GetPressure();
     static uint32_t GetAltitude();
 private:
-    static uint32_t TakeMetricForcedMeasurement(const std::function<uint32_t(void)>& InLambda);
+    static uint32_t WakeUpSensorToTakeMetricForcedMeasurement(const std::function<uint32_t(void)>& InLambda);
 };

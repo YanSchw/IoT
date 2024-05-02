@@ -33,27 +33,27 @@ void BMP::Init()
 
 uint32_t BMP::GetTemperature()
 {
-    return BMP::TakeMetricForcedMeasurement([] ()
+    return BMP::WakeUpSensorToTakeMetricForcedMeasurement([] ()
     {
         return static_cast<uint32_t>(bmp.readTemperature());
     });
 }
 uint32_t BMP::GetPressure()
 {
-    return BMP::TakeMetricForcedMeasurement([] ()
+    return BMP::WakeUpSensorToTakeMetricForcedMeasurement([] ()
     {
         return static_cast<uint32_t>(bmp.readPressure());
     });
 }
 uint32_t BMP::GetAltitude()
 {
-    return BMP::TakeMetricForcedMeasurement([] ()
+    return BMP::WakeUpSensorToTakeMetricForcedMeasurement([] ()
     {
         return static_cast<uint32_t>(bmp.readAltitude(1013.25)); /* Adjusted to local forecast! */
     });
 }
 
-uint32_t BMP::TakeMetricForcedMeasurement(const std::function<uint32_t(void)>& InLambda)
+uint32_t BMP::WakeUpSensorToTakeMetricForcedMeasurement(const std::function<uint32_t(void)>& InLambda)
 {
     // must call this to wake sensor up and get new measurement data
     // it blocks until measurement is complete
