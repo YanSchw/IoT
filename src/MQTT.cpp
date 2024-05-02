@@ -7,6 +7,23 @@
 
 static esp_mqtt_client_handle_t s_Client;
 
+static esp_err_t mqtt_event_callback(esp_mqtt_event_handle_t event)
+{
+    if (event->event_id == MQTT_EVENT_DATA)
+    {
+        Serial.println("MQTT Event: DATA Received");
+        Serial.print("Topic: ");
+        std::string topic = std::string(event->topic, event->topic_len);
+        Serial.println(topic.c_str());
+
+        Serial.print("Message: "); 
+        std::string message = std::string(event->data, event->data_len);
+        Serial.println(message.c_str());
+    }
+
+    return {};
+}
+
 void MQTT::Connect()
 {
     WiFi.mode(WIFI_STA);
@@ -34,6 +51,9 @@ void MQTT::Connect()
     config.keepalive = 10;
     //config.disable_auto_reconnect = 1;
 
+    // Setip Event Callback
+    config.event_handle = &mqtt_event_callback;
+
     s_Client = esp_mqtt_client_init(&config);
     if (s_Client == NULL)
     {
@@ -45,6 +65,9 @@ void MQTT::Connect()
     }
 
     Serial.println("MQTT Client Connected!");
+
+    // Subscribe to all 'event/#'
+    esp_mqtt_client_subscribe(s_Client, "event/#", 2);
 }
 
 void MQTT::Publish(const std::string& topic, const std::string& data, int32_t qos, bool retain)
