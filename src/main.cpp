@@ -21,5 +21,6 @@ void loop()
     MQTT::Publish("devices/project/temp", BMP::GetTemperature(), 2, false);
     MQTT::Publish("devices/project/pressure", BMP::GetPressure(), 2, false);
     MQTT::Publish("devices/project/altitude", BMP::GetAltitude(), 2, false);
+    MQTT::Publish("devices/project/moisture", Moisture::GetMoisture(), 2, false);
     delay(5000);
 }
